@@ -1,10 +1,21 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
+import Navbar from './pages/Navbar'
+import HomePage from './pages/HomePage'
+
 
 function App() {
   return (
-    <div>
-      Will become a amazing blog
-    </div>
+    <Router>
+      <Navbar />
+      <Route exact path="/" component={HomePage}/>
+      <Redirect to="/" />
+    </Router>
   );
 }
 
