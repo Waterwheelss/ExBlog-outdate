@@ -1,0 +1,86 @@
+/**
+ * This file define form components' css
+ */
+
+.form {
+    &--card {
+        background-color: $--color-light-dark;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 3px 3px 10px $--color-black;
+    }
+
+    &__logo-container {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    &__logo {
+        display: block;
+        margin: auto;
+        width: 100px;
+        height: 100px;
+    }
+
+    &__inputField {
+        position: relative;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    &__label {
+        display: block;
+        // margin-bottom: 10px;
+        // margin-top: 10px;
+        font-family: Roboto, "san-serif";
+        letter-spacing: 0.05em;
+        font-weight: 100;
+        position: absolute;
+        top: 5px;
+        z-index: 1;
+    }
+
+    &__input {
+        width: 300px;
+        height: 30px;
+        border: none; //clear border style
+        background-color: transparent;
+        border-bottom: solid 2px $--color-background-dark;
+        color: $--color-white;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__input:focus,
+    &__input.hasValue {
+        // border-color: $--color-secondary;
+        outline: none;
+    }
+
+    &__label {
+        transition: 0.2s;
+    }
+
+    &__input:focus + &__label,
+    &__input.hasValue + &__label {
+        font-size: 1.3rem;
+        transform: translateY(-20px);
+        transition: 0.2s;
+    }
+
+    &__inputLine {
+        display: block;
+        position: absolute;
+        width: 0px;
+        border-bottom: solid 2px $--color-secondary;
+        transition: width 0.3s ease;
+        bottom: 1px;
+        z-index: 3;
+    }
+
+    &__input:focus + &__label + &__inputLine,
+    &__input.hasValue + &__label + &__inputLine {
+        width: 100%;
+        transition: width 0.3s ease;
+    }
+}

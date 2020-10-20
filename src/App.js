@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import Navbar from './pages/Navbar'
 import HomePage from './pages/HomePage'
+import LoginPage from './pages/LoginPage'
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     <Router>
       <Navbar />
       <Route exact path="/" component={HomePage}/>
-      <Redirect to="/" />
+      <Route exact path="/login" component={LoginPage}/>
     </Router>
   );
 }

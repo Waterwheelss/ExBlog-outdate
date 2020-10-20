@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Icon } from '../components/Icon'
 
 const Navbar = () => {
@@ -10,9 +11,9 @@ const Navbar = () => {
             <div className="navbar__list-container">
                 <ul className="navbar__list">
                     <li>
-                        <a>
+                        <Link to="/login">
                             Login
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a>
