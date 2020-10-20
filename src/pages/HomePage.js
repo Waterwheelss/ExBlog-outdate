@@ -1,13 +1,14 @@
 import React from 'react'
 import { PostsList } from '../features/post/PostsList'
+import Box from '../components/box'
 
 const HomePage = () => {
     return (
-        <div className="Home">
-            <div className="mt-10">
+        <Box className="Home">
+            <Box mt="10rem">
                 <PostsList />
-            </div>
-        </div>
+            </Box>
+        </Box>
     )
 }
 

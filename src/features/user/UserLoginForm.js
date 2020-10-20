@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Icon } from '../../components/Icon'
-import { TextInput } from '../../components/Input'
-import Button from '@material-ui/core/Button';
+import TextInput from '../../components/textInput'
+import Button from '../../components/button';
+import Card from '../../components/card'
+import Box from '../../components/box'
+
 
 export const UserLoginForm = () => {
     const [email, setEmail] = useState('')
@@ -15,11 +18,15 @@ export const UserLoginForm = () => {
         console.log(data)
     }
     return (
-        <div className="form form--card">
-            <div className="form__logo-container">
-                <Icon className="form__logo" />
-            </div>
-            <div className="form__form-container">
+        <Card>
+            <Box mt="10px" mb="30px">
+                <Box
+                    textAlign="center"
+                >
+                    <Icon width="100px" height="100px" className="form__logo" />
+                </Box>
+            </Box>
+            <Box>
                 <form action="" className="form" onSubmit={(e) => onSubmit(e)}>
                     <TextInput
                         name='email'
@@ -35,8 +42,13 @@ export const UserLoginForm = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    <Box textAlign="center">
+                        <Button>
+                            登入
+                        </Button>
+                    </Box>
                 </form>
-            </div>
-        </div>
+            </Box>
+        </Card>
     )
 }
