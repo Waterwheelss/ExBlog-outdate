@@ -1,4 +1,3 @@
-import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
 export const theme = {
@@ -6,7 +5,9 @@ export const theme = {
     dark: '#081229',
     lightDark: '#191d3a',
     black: '#111',
-    white: '#fff'
+    white: '#fff',
+    success: '#4caf50',
+    danger: '#f44336'
 }
 
 export const Reset = createGlobalStyle`
@@ -59,7 +60,6 @@ export const GlobalStyle = createGlobalStyle`
 /**
  * Import font from google font
  */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&family=Roboto:wght@100;400;700&display=swap");
 
 /**
  * Global Css

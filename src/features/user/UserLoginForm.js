@@ -4,18 +4,24 @@ import TextInput from '../../components/textInput'
 import Button from '../../components/button';
 import Card from '../../components/card'
 import Box from '../../components/box'
-
+import Alert from '../../components/alert';
+import { useDispatch } from 'react-redux'
+import { userLogin } from './userSlice'
 
 export const UserLoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const dispatch = useDispatch();
+
     const onSubmit = (e) => {
         e.preventDefault();
         const data = {
             email,
             password
         }
-        console.log(data)
+        dispatch(
+            userLogin(data)
+        )
     }
     return (
         <Card>
@@ -25,6 +31,11 @@ export const UserLoginForm = () => {
                 >
                     <Icon width="100px" height="100px" className="form__logo" />
                 </Box>
+            </Box>
+            <Box>
+                <Alert type="danger">
+                    testing
+                </Alert>
             </Box>
             <Box>
                 <form action="" className="form" onSubmit={(e) => onSubmit(e)}>

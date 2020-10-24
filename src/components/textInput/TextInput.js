@@ -13,7 +13,7 @@ const Input = styled.input`
     border: none; //clear border style
     background-color: transparent;
     border-bottom: solid 2px ${props => props.theme.dark};
-    color: $--color-white;
+    color: ${props => props.theme.white};
     position: relative;
     z-index: 2;
 

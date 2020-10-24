@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './scss/index.scss';
 import App from './App';
+import './index.css'
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import store from './store'
 import { ThemeProvider } from 'styled-components'
 import { theme, Reset, GlobalStyle } from './theme'
+
+/**
+ * Define global variables
+ */
+window.APP_URL = 'http://localhost:3000/'
+window.API_URL = 'http://localhost/api/'
 
 ReactDOM.render(
   <React.StrictMode>
