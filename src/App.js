@@ -8,16 +8,18 @@ import {
 import Navbar from './pages/Navbar'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
-
+import { useSelector } from 'react-redux'
+import { selectUser } from './features/user/userSlice'
 
 function App() {
-  return (
+  const user = useSelector(selectUser)
+  return user.isLoaded ? (
     <Router>
       <Navbar />
-      <Route exact path="/" component={HomePage}/>
-      <Route exact path="/login" component={LoginPage}/>
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/login" component={LoginPage} />
     </Router>
-  );
+  ) : null;
 }
 
 export default App;

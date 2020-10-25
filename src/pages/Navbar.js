@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '../components/Icon'
 import Box from '../components/box'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../features/user/userSlice'
 
 const NavBox = styled.div`
     display: flex;
@@ -17,6 +19,8 @@ const NavBox = styled.div`
 `
 
 const Navbar = () => {
+    const user = useSelector(selectUser)
+    console.log(user)
     return (
         <NavBox>
             <Box>
@@ -25,18 +29,25 @@ const Navbar = () => {
                 </Box>
             </Box>
             <Box>
-                <Box mr="5rem">
-                    <Box display="inline-block" mr="10px" ml="10px">
-                        <Link to="/login">
-                            Login
+                {!user.isAuthenticated &&
+                    <Box mr="5rem">
+                        <Box display="inline-block" mr="10px" ml="10px">
+                            <Link to="/login">
+                                Login
                         </Link>
-                    </Box>
-                    <Box display="inline-block" mr="10px" ml="10px">
-                        <a>
-                            Sign Up
+                        </Box>
+                        <Box display="inline-block" mr="10px" ml="10px">
+                            <a>
+                                Sign Up
                         </a>
+                        </Box>
                     </Box>
-                </Box>
+                }
+                {user.isAuthenticated &&
+                    <Box>
+                        {user.name}
+                    </Box>
+                }
             </Box>
         </NavBox>
     )

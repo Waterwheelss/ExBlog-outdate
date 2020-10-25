@@ -5,24 +5,40 @@ import Button from '../../components/button';
 import Card from '../../components/card'
 import Box from '../../components/box'
 import Alert from '../../components/alert';
+import Spinner from '../../components/spinner'
 import { useDispatch } from 'react-redux'
 import { userLogin } from './userSlice'
+import { unwrapResult } from '@reduxjs/toolkit';
+import { Redirect } from 'react-router-dom'
 
 export const UserLoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const dispatch = useDispatch();
+    const [requestStatus, setRequestStatus] = useState('idle')
+    const [message, setMessage] = useState('')
+    const dispatch = useDispatch()
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const onSubmit = async (e) => {
+        e.preventDefault()
         const data = {
             email,
             password
         }
-        dispatch(
-            userLogin(data)
-        )
+        try {
+            setRequestStatus('pending')
+            const resultAction = await dispatch(
+                userLogin(data)
+            )
+            unwrapResult(resultAction)
+            setEmail('')
+            setPassword('')
+            setRequestStatus('success')
+        } catch (error) {
+            setMessage('帳號密碼錯誤')
+            setRequestStatus('error')
+        }
     }
+
     return (
         <Card>
             <Box mt="10px" mb="30px">
@@ -32,18 +48,26 @@ export const UserLoginForm = () => {
                     <Icon width="100px" height="100px" className="form__logo" />
                 </Box>
             </Box>
-            <Box>
-                <Alert type="danger">
-                    testing
-                </Alert>
-            </Box>
+            {requestStatus === 'pending' &&
+                <Box textAlign="center">
+                    <Spinner />
+                </Box>
+            }
+            {requestStatus === 'error' &&
+                <Box>
+                    <Alert type="danger">
+                        {message}
+                    </Alert>
+                </Box>
+            }
             <Box>
                 <form action="" className="form" onSubmit={(e) => onSubmit(e)}>
                     <TextInput
                         name='email'
                         label="Email"
-                        type="text"
+                        type="email"
                         value={email}
+                        required
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <TextInput
@@ -51,6 +75,7 @@ export const UserLoginForm = () => {
                         label="Password"
                         type="password"
                         value={password}
+                        required
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <Box textAlign="center">
@@ -60,6 +85,6 @@ export const UserLoginForm = () => {
                     </Box>
                 </form>
             </Box>
-        </Card>
+        </Card >
     )
 }

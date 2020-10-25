@@ -63,12 +63,13 @@ const TextInput = (props) => {
         onChange,
         value,
         label,
-        type
+        type,
+        required
     } = props
 
     return (
         <InputField className={`${className}`}>
-            <Input className={`${value ? 'hasValue' : ''}`} type={type} name={name} value={value} onChange={(e) => onChange(e)}></Input>
+            <Input required={required} className={`${value ? 'hasValue' : ''}`} type={type} name={name} value={value} onChange={(e) => onChange(e)}></Input>
             <Label htmlFor="email">{label}</Label>
             <Line />
         </InputField>

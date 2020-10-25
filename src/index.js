@@ -7,12 +7,15 @@ import { Provider } from 'react-redux'
 import store from './store'
 import { ThemeProvider } from 'styled-components'
 import { theme, Reset, GlobalStyle } from './theme'
+import { refreshToken } from './features/user/userSlice'
 
 /**
  * Define global variables
  */
 window.APP_URL = 'http://localhost:3000/'
 window.API_URL = 'http://localhost/api/'
+
+store.dispatch(refreshToken());
 
 ReactDOM.render(
   <React.StrictMode>
