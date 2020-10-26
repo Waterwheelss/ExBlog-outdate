@@ -123,6 +123,10 @@ p {
     letter-spacing: 0.04em;
 }
 
+span{
+    font-size: 1.6rem;
+}
+
 a {
     color: ${props => props.theme.white};
     text-decoration: none;

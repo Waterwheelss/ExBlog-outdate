@@ -5,6 +5,7 @@ import Box from '../components/box'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../features/user/userSlice'
+import Text from '../components/text'
 
 const NavBox = styled.div`
     display: flex;
@@ -20,7 +21,6 @@ const NavBox = styled.div`
 
 const Navbar = () => {
     const user = useSelector(selectUser)
-    console.log(user)
     return (
         <NavBox>
             <Box>
@@ -44,8 +44,8 @@ const Navbar = () => {
                     </Box>
                 }
                 {user.isAuthenticated &&
-                    <Box>
-                        {user.name}
+                    <Box mr="5rem">
+                        <Text as="span">{user.name}</Text>
                     </Box>
                 }
             </Box>

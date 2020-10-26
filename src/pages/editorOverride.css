@@ -1,0 +1,26 @@
+.rc-md-editor .editor-container .sec-md .input{
+    background-color: #1e2126;
+    color: #fff   
+}
+
+.rc-md-editor{
+    border: none;
+    background-color: none;
+}
+
+.rc-md-navigation{
+    border: none;
+    background-color: #191d3a;
+}
+
+.rc-md-navigation .button-wrap .rmel-iconfont{
+    color: #fff;
+}
+
+.rc-md-editor .editor-container .sec-html .html-wrap{
+    background-color: #081229;
+}
+
+.custom-html-style{
+    color: #fff;
+}
